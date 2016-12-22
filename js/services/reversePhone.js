@@ -4,7 +4,7 @@ angular.module('whitepages').service('reversePhone', function($http, $q){
   this.getPhoneNum = function(num){
     var phoneData = {};
     var deferred = $q.defer();
-    var phoneGetter = 'https://proapi.whitepages.com/3.0/phone.json?api_key=7f020962e4cc43bf9b186deeafb67605&phone=' + num;
+   
       $http({
       method: 'GET',
       url: phoneGetter
