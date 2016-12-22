@@ -1,18 +1,28 @@
-angular.module('whitepages').controller('view2Ctrl', function($scope, reversePhone){
-  $scope.getPhoneData = function(){
-      $scope.phoneData = reversePhone.getPhoneData();
-      console.log($scope.phoneData);
-  };
+angular.module('whitepages').controller('view2Ctrl', function($scope, reversePhone) {
 
-  function initMap() {
-  var uluru = {lat: -25.363, lng: 131.044};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: uluru
-  });
-  var marker = new google.maps.Marker({
-    position: uluru,
-    map: map
-  });
-}
+    var getPhoneData = function() {
+        $scope.phoneData = reversePhone.getPhoneData();
+        $scope.coordsLat = $scope.phoneData.latitude;
+        $scope.coordsLong = $scope.phoneData.longitude;
+    };
+    getPhoneData();
+
+
+    function initMap() {
+        var uluru = {
+            lat: $scope.coordsLat,
+            lng: $scope.coordsLong
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+
+    }
+    initMap();
+
 });
