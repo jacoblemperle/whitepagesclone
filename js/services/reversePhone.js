@@ -4,7 +4,7 @@ angular.module('whitepages').service('reversePhone', function($http, $q){
   this.getPhoneNum = function(num){
     var phoneData = {};
     var deferred = $q.defer();
-   
+    
       $http({
       method: 'GET',
       url: phoneGetter
