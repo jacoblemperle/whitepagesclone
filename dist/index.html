@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html ng-app="whitepages">
-    <head>
-        <link rel="stylesheet" href="./dist/styles.css">
-        <script src="https://use.fontawesome.com/de46eec48b.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Angular App</title>
-    </head>
-    <body ng-controller="mainCtrl">
-      <div class="full-container">
+
+<head>
+    <link rel="stylesheet" href="./dist/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i" rel="stylesheet">
+    <script src="https://use.fontawesome.com/de46eec48b.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular App</title>
+</head>
+
+<body ng-controller="mainCtrl">
+
+    <div class="full-container">
 
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
-            <a ui-href="reverse">Home</a>
-            <a href="phone-data">Information</a>
+            <a ui-sref="reverse">Home</a>
+            <a ui-sref="phone-data">Information</a>
             <a href="#">Careers</a>
             <a href="#">About</a>
         </div>
 
         <span style="font-size:30px;cursor:pointer" ng-click="openNav()">
-            <i class="fa fa-bars" aria-hidden="true"></i>
+            <i class="fa fa-bars burgerMenu" aria-hidden="true"></i>
         </span>
 
         <ui-view></ui-view>
 
 
-      </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
-        <script src="./dist/js/bundle.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIa2ovkLcCzl22akx4qhjHWvVgN7hUK1E&callback=initMap" async defer></script>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+    <script src="./dist/js/bundle.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIa2ovkLcCzl22akx4qhjHWvVgN7hUK1E&callback=initMap" async defer></script>
 
-    </body>
+
+</body>
+
 </html>

@@ -5,6 +5,7 @@
    width: 100vw;
    padding: 15px 15px 15px 15px;
  }
+
 .sidenav {
     height: 100%;
     width: 0;
@@ -14,8 +15,12 @@
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.1s;
     padding-top: 60px;
+}
+.burgerMenu{
+  color: gray;
+  font-size: 60px;
 }
 .sidenav a {
     padding: 8px 8px 8px 32px;
@@ -23,7 +28,7 @@
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s
+    transition: 0.1s
 }
 .sidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
@@ -41,38 +46,84 @@
   .sidenav a {font-size: 18px}
 }
 
-.reverse-main-container{
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+.reverse-main-container {
+    height: 93vh;
+    width: 95vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    padding-bottom: 112px;
+    margin-left: 15px;
 }
 
-.reverse-input-container {
-  height: 44px;
-  background-color: white;
-  border: solid 1px #bebfc1;
-  width: 90%;
-  margin-top: 14px;
-}
+
 
 .reverse-content-holder {
-  width: 100%;
-  height: 65vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 1px;
+    width: 95vw;
+    height: 38vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .mobile-main-logo {
-  width: 200px;
+    width: 200px;
+    margin-bottom: 26px;
 }
 
-.reverse-content-holder h1 {
-  font-family: $robotoFont;
-  font-weight: 100;
-  font-size: 24px;
-  margin-top: 15px;
+.reverse-content-holder p {
+    font-family: $robotoFont;
+    font-weight:100;
+    font-size: 24px;
+}
+.reverse-content-holder h2 {
+    font-family: $robotoFont;
+    margin-top: 10px;
+    font-weight:300;
+    color: #939597;
+    font-size: 18px;
+}
+
+
+.reverse-input-container {
+    width: 95%;
+    margin-bottom: 62px;
+}
+
+.reverse-input-container input#search{
+  width: 95%;
+  height: 44px;
+  background: white;
+  border: solid 1px #bebfc1;
+  font-size: 10pt;
+  color: #fff;
+  padding-left: 15px;
+  padding-top: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.16), 0 2px 10px rgba(0,0,0,0.12);
+
+
+}
+
+
+.reverse-input-container button.icon{
+  background: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  margin-left: -50px;
+  color: gray;
+}
+
+.backgroundReportLink {
+  color: #4090e0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.bottomLogoMobile {
+  position: absolute;
+  width: 300px;
+  right: 0;
+  bottom: 0;
 }
