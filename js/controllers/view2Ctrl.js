@@ -1,47 +1,48 @@
 angular.module('whitepages').controller('view2Ctrl', function($scope, reversePhone) {
 
-
-  $scope.$on("$locationChangeStart", function(event, next, current) {
-      if(next==current && next=='/newproject')
-          $state.go('home');
-  });
-
     var getPhoneData = function() {
         $scope.phoneData = reversePhone.getPhoneData();
-        $scope.coordsLat = $scope.phoneData.latitude;
-        $scope.coordsLong = $scope.phoneData.longitude;
-        $scope.accuracy = $scope.phoneData.accuracy;
+        $scope.location = $scope.phoneData.current_addresses[0].lat_long;
+        $scope.longitude = $scope.phoneData.current_addresses[0].lat_long.longitude;
+        $scope.latitude = $scope.phoneData.current_addresses[0].lat_long.latitude;
+        $scope.accuracy = $scope.phoneData.current_addresses[0].lat_long.accuracy;
+
     };
-    getPhoneData();
+
 
     function initMap() {
-      var zoomAmount = 10;
-      if($scope.accuracy === "RoofTop" || $scope.accuracy === "Street"){
-        zoomAmount = 20;
-      } else if($scope.accuracy === "PostalCode" || $scope.accuracy === "City") {
-        zoomAmount = 11;
-      } else if ($scope.accuracy === "State") {
-        zoomAmount = 8;
-      } else if ($scope.accuracy === "Country") {
-        zoomAmount = 6;
-      } else{
-        zoomAmount = 10;
-      }
-
-        var myLocation = {
-            lat: $scope.coordsLat,
-            lng: $scope.coordsLong
+          if(!$scope.latitude){
+            uluru.lat = 0;
+          } else {
+            uluru.lat = $scope.latitude;
+          }
+          if(!$scope.longitude){
+            uluru.lng = 0;
+          } else {
+            uluru.lng = $scope.longitude;
+          }
+      
+        var uluru = {
+            lat: $scope.latitude,
+            lng: $scope.longitude
         };
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: zoomAmount,
-            center: myLocation
+            zoom: 10,
+            center: uluru
         });
         var marker = new google.maps.Marker({
-            position: myLocation,
+            position: uluru,
             map: map
         });
-
     }
-    initMap();
 
+    setTimeout(function () {
+        console.log("getting phone data");
+        getPhoneData();
+    }, 1000);
+    setTimeout(function () {
+        console.log("getting initmap");
+        console.log($scope.location);
+        initMap();
+    }, 1500);
 });

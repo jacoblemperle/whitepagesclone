@@ -1,11 +1,11 @@
 
-<div class="reverse-main-container">
+<div class="reverse-main-container" ng-show="toggleInput">
 <img src="https://cdnwp.global.ssl.fastly.net/assets/ic-cropped-w-1d0708db3f67a733d7ef3555dba31f46.svg" class="bottomLogoMobile">
   <div class="reverse-content-holder">
     <img class="mobile-main-logo" src="https://cdnwp.global.ssl.fastly.net/assets/home_page/logo_wp@2x-bb6883ecd1de19cc47355c5225412ee8.png" alt="">
 
       <div class="reverse-input-container">
-    <input type="search" id="search"/>
+    <input type="search" id="search" ng-click="toggleInput = !toggleInput" />
     <button class="icon"><i class="fa fa-search fa-2x"></i></button>
   </div>
     <p>People and Public Records Search.</p>
@@ -13,32 +13,6 @@
   </div>
 
 
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="phoneInfo">
-  The Number: {{phoneData.phoneNumber}} belongs to {{phoneData.belongsTo.name}}<br />
-  {{phoneData.address.street_line_1}} {{phoneData.address.city}} {{phoneData.address.postal_code}} {{phoneData.address.state_code}} {{phoneData.address.country_code}}
-
-  {{phoneData.carrier}}
-
-  {{phoneData.latLong.latitude}}
-  {{phoneData.latLong.longitude}}
-</div> -->
+<input-mobile ng-show="!toggleInput"></input-mobile>

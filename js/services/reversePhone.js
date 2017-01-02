@@ -1,15 +1,14 @@
 angular.module('whitepages').service('reversePhone', function($http, $q) {
-
     var holder;
     this.getPhoneNum = function(num) {
         var phoneData = {};
         var deferred = $q.defer();
-        var phoneGetter = 'https://proapi.whitepages.com/3.0/phone.json?api_key={{whitepagesKey}}&phone=' + num;
+        var phoneGetter = 'https://proapi.whitepages.com/3.0/phone.json?api_key={{apikey}}&phone=' + num;
         $http({
             method: 'GET',
             url: phoneGetter
         }).then(function(response) {
-            holder = response.data;
+            holder = response;
             phoneData.phoneNumber = response.data.phone_number;
             phoneData.latLong = response.data.current_addresses[0].lat_long;
             phoneData.address = response.data.current_addresses[0];
@@ -22,13 +21,8 @@ angular.module('whitepages').service('reversePhone', function($http, $q) {
         return deferred.promise;
     };
     this.getPhoneData = function() {
-        var personData = {
-            address: holder.current_addresses[0],
-            belongsTo: holder.belongs_to[0],
-            latitude: holder.current_addresses[0].lat_long.latitude,
-            longitude: holder.current_addresses[0].lat_long.longitude,
-            accuracy: holder.current_addresses[0].lat_long.accuracy
-        };
+      console.log(holder);
+        var personData = holder;
         return personData;
     };
 });

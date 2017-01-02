@@ -1,0 +1,44 @@
+var personData = {
+  "phone_number": "8012016534",
+  "is_valid": true,
+  "country_calling_code": "1",
+  "line_type": "Mobile",
+  "carrier": "AT&T",
+  "is_prepaid": null,
+  "is_commercial": false,
+  "belongs_to": [
+    {
+      "name": "Steve Lemperle",
+      "age_range": null,
+      "gender": null,
+      "type": "Person"
+    }
+  ],
+  "current_addresses": [
+    {
+      "street_line_1": "W 15000 S",
+      "street_line_2": null,
+      "city": "Riverton",
+      "postal_code": "84065",
+      "zip4": "5057",
+      "state_code": "UT",
+      "country_code": "US",
+      "lat_long": {
+        "latitude": 40.47879,
+        "longitude": -111.964862,
+        "accuracy": "Street"
+      },
+      "is_active": null,
+      "delivery_point": null
+    }
+  ],
+  "associated_people": [
+
+  ],
+  "alternate_phones": [
+
+  ],
+  "warnings": [
+
+  ]
+}

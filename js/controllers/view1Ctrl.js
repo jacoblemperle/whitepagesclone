@@ -4,4 +4,6 @@ angular.module('whitepages').controller('view1Ctrl', function($scope, reversePho
       $scope.phoneData = response;
     });
   };
+
+  $scope.toggleInput = true;
 });

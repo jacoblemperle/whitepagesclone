@@ -12,7 +12,6 @@
 <body ng-controller="mainCtrl">
 
     <div class="full-container">
-
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
             <a ui-sref="reverse">Home</a>
@@ -28,11 +27,12 @@
         <ui-view></ui-view>
 
 
+
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
     <script src="./dist/js/bundle.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{googleapikey}}&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{apikey}}&callback=initMap" async defer></script>
 
 
 </body>

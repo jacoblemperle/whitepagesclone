@@ -1,11 +1,5 @@
-<h3>Location of {{phoneData.belongsTo.name}}</h3>
+<h3>Location of {{phoneData.phone_number}}</h3>
+{{phoneData.current_addresses}}
+{{test}}
+
 <div id="map"></div>
-  <button type="button" name="button" ng-click="getPhoneData()">Get DATA</button>
-  The Number: {{phoneData.phoneNumber}} belongs to {{phoneData.belongsTo.name}}<br />
-  {{phoneData.address.street_line_1}} {{phoneData.address.city}} {{phoneData.address.postal_code}} {{phoneData.address.state_code}} {{phoneData.address.country_code}}
-
-  {{phoneData.carrier}}
-
-  {{phoneData.latLong.latitude}}
-  {{phoneData.latLong.longitude}}
-</div>
