@@ -29,10 +29,16 @@ angular.module('whitepages').controller('view1Ctrl', function ($scope, $state, r
   $scope.getPhoneNum = function (num) {
     var newNum = num.replace(/[^0-9]/g, '');
     if (newNum.length !== 10) {
-      alert(newNum + " is not a correct input");
+      swal({
+        title: "Error!",
+        text: "Enter phone number in correctly",
+        type: "error",
+        confirmButtonText: "Try Again"
+      });
     } else {
       reversePhone.getPhoneNum(newNum).then(function (response) {
         console.log(response);
+
         $scope.phoneData = response;
         reversePhone.data = response;
         $state.go("phone-data");
@@ -58,21 +64,26 @@ angular.module('whitepages').controller('view2Ctrl', function ($scope, $state, $
     var initMap = function () {
         var zoomAmount = 10;
         if ($scope.data.address.lat_long.accuracy === "Street" || $scope.data.address.lat_long.accuracy === "Rooftop") {
+            $scope.myAccuracy = "Street";
             zoomAmount = 18;
+        } else if ($scope.data.address.lat_long.accuracy === "PostalCode") {
+            $scope.myAccuracy = "Postal Code";
+            zoomAmount = 11;
         } else {
             zoomAmount = 7;
+            $scope.myAccuracy = "Far";
         }
-        var uluru = {
+        var myCoords = {
             lat: $scope.data.address.lat_long.latitude,
             lng: $scope.data.address.lat_long.longitude
         };
-        console.log(uluru);
         var map = new google.maps.Map(document.getElementById('map'), {
+            scrollwheel: false,
             zoom: zoomAmount,
-            center: uluru
+            center: myCoords
         });
         var marker = new google.maps.Marker({
-            position: uluru,
+            position: myCoords,
             map: map
         });
     }();

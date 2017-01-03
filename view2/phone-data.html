@@ -26,7 +26,7 @@
         <div class="phone-content">
             <span class="phone-number-phone-data phone-data-spacer">
                 {{final_number}}</span>
-            <span class="large-phone-content">{{data.phone_number}}
+            <span class="large-phone-content">
                 is a
                 <em class="em-text-phone-content" id="line-type-tolower">{{data.line_type}}</em>
                 number provided by
@@ -34,13 +34,13 @@
                 with an area code in
                 <em class="em-text-phone-content">{{data.address.state_code}}</em>
             </span>
-            <span class="phone-data-spacer mobile-phone-content">{{data.carrier}}</span><br>
-            <span class="phone-data-spacer mobile-phone-content">Area Code</span>
+
         </div>
     </div>
     <div class="map-content-holder">
         <span class="map-location-text">Owner Based In
             {{data.address.city}}</span>
+            <span class="map-location-text">Marker accuracy within {{myAccuracy}}</span>
         <div class="map-container">
             <div id="map"></div>
         </div>

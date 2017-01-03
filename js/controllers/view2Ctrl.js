@@ -12,21 +12,26 @@ angular.module('whitepages').controller('view2Ctrl', function($scope, $state, $r
     var initMap = (function() {
         var zoomAmount = 10;
         if ($scope.data.address.lat_long.accuracy === "Street" || $scope.data.address.lat_long.accuracy === "Rooftop") {
+          $scope.myAccuracy = "Street"
             zoomAmount = 18;
+        } else if($scope.data.address.lat_long.accuracy === "PostalCode"){
+          $scope.myAccuracy = "Postal Code"
+            zoomAmount = 11;
         } else {
-            zoomAmount = 7;
+          zoomAmount = 7;
+          $scope.myAccuracy = "Far"
         }
-        var uluru = {
+        var myCoords = {
             lat: $scope.data.address.lat_long.latitude,
             lng: $scope.data.address.lat_long.longitude
         };
-        console.log(uluru);
         var map = new google.maps.Map(document.getElementById('map'), {
+            scrollwheel: false,
             zoom: zoomAmount,
-            center: uluru
+            center: myCoords
         });
         var marker = new google.maps.Marker({
-            position: uluru,
+            position: myCoords,
             map: map
         });
     })();

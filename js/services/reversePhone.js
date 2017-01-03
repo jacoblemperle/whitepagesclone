@@ -3,7 +3,7 @@ this.data;
     this.getPhoneNum = function(num) {
       console.log(num);
         var deferred = $q.defer();
-        var phoneGetter = 'https://proapi.whitepages.com/3.0/phone.json?api_key={{apikey}}e&phone=' + num;
+        var phoneGetter = 'https://proapi.whitepages.com/3.0/phone.json?api_key=f34dd91462b04221997bc7420a8d7f4e&phone=' + num;
         $http({
             method: 'GET',
             url: phoneGetter
