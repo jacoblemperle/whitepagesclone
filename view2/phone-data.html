@@ -1,11 +1,51 @@
-<h3>Location of {{phoneData.belongsTo.name}}</h3>
-<div id="map"></div>
-  <button type="button" name="button" ng-click="getPhoneData()">Get DATA</button>
-  The Number: {{phoneData.phoneNumber}} belongs to {{phoneData.belongsTo.name}}<br />
-  {{phoneData.address.street_line_1}} {{phoneData.address.city}} {{phoneData.address.postal_code}} {{phoneData.address.state_code}} {{phoneData.address.country_code}}
+<div class="phone-data-header-mobile">
+    <a ui-sref="reverse"><img src="https://cdnwp.global.ssl.fastly.net/assets/home_page/logo_wp@2x-bb6883ecd1de19cc47355c5225412ee8.png" class="phone-data-mobile-logo"></a>
+    <div class="input-holder-phone-data">
+        <input type="text" name="" value="" placeholder="{{data.phone_number}}" class="phone-data-top-input">
+    </div>
+    <hr class="hr-phone-data-head">
+    <div class="large-container-phone-data">
+        <div class="large-map-content-filler">
+            <h1>{{final_number}}</h1><br>
+            <h2><em class="em-text-phone-content">Owner:</em> {{data.name}}<br></h2><br>
+            <h3><em class="em-text-phone-content">Address:</em>
+            {{data.address.street_line_1}} {{data.address.city}} {{data.address.state_code}} {{data.address.postal_code}}-{{data.address.zip4}}
+          </h3><br>
+            <h4><span class="large-phone-content"><em class="em-text-phone-content">{{final_number}}</em>
+                is a
+                <em class="em-text-phone-content" id="line-type-tolower">{{data.line_type}}</em>
+                number provided by
+                <em class="em-text-phone-content">{{data.carrier}}</em>
+                with an area code in
+                <em class="em-text-phone-content">{{data.address.state_code}}</em>
+            </span></h4>
+        </div>
 
-  {{phoneData.carrier}}
+    <div class="phone-content-container">
 
-  {{phoneData.latLong.latitude}}
-  {{phoneData.latLong.longitude}}
+        <div class="phone-content">
+            <span class="phone-number-phone-data phone-data-spacer">
+                {{final_number}}</span>
+            <span class="large-phone-content">
+                is a
+                <em class="em-text-phone-content" id="line-type-tolower">{{data.line_type}}</em>
+                number provided by
+                <em class="em-text-phone-content">{{data.carrier}}</em>
+                with an area code in
+                <em class="em-text-phone-content">{{data.address.state_code}}</em>
+            </span>
+
+        </div>
+    </div>
+    <div class="map-content-holder">
+        <span class="map-location-text">Owner Based In
+            {{data.address.city}}</span>
+            <span class="map-location-text">Marker accuracy within {{myAccuracy}}</span>
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        </div>
+
+    </div>
+
 </div>

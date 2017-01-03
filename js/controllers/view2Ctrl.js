@@ -1,47 +1,40 @@
-angular.module('whitepages').controller('view2Ctrl', function($scope, reversePhone) {
+angular.module('whitepages').controller('view2Ctrl', function($scope, $state, $rootScope, reversePhone) {
+    $scope.data = reversePhone.data;
+    if (!$scope.data) {
+        $state.go('reverse');
+    }
+    console.log(reversePhone.data);
+    var phone_number = reversePhone.data.phone_number;
+    var new_phone_number = "(" + phone_number[0] + phone_number[1] + phone_number[2] + ")" + " " + phone_number[3] + phone_number[4] + phone_number[5] + "-" + phone_number[6] + phone_number[7] + phone_number[8] + phone_number[9];
 
-
-  $scope.$on("$locationChangeStart", function(event, next, current) {
-      if(next==current && next=='/newproject')
-          $state.go('home');
-  });
-
-    var getPhoneData = function() {
-        $scope.phoneData = reversePhone.getPhoneData();
-        $scope.coordsLat = $scope.phoneData.latitude;
-        $scope.coordsLong = $scope.phoneData.longitude;
-        $scope.accuracy = $scope.phoneData.accuracy;
-    };
-    getPhoneData();
-
-    function initMap() {
-      var zoomAmount = 10;
-      if($scope.accuracy === "RoofTop" || $scope.accuracy === "Street"){
-        zoomAmount = 20;
-      } else if($scope.accuracy === "PostalCode" || $scope.accuracy === "City") {
-        zoomAmount = 11;
-      } else if ($scope.accuracy === "State") {
-        zoomAmount = 8;
-      } else if ($scope.accuracy === "Country") {
-        zoomAmount = 6;
-      } else{
-        zoomAmount = 10;
-      }
-
-        var myLocation = {
-            lat: $scope.coordsLat,
-            lng: $scope.coordsLong
+    $scope.final_number = new_phone_number;
+    console.log($scope.final_number);
+    var initMap = (function() {
+        var zoomAmount = 10;
+        if ($scope.data.address.lat_long.accuracy === "Street" || $scope.data.address.lat_long.accuracy === "Rooftop") {
+          $scope.myAccuracy = "Street"
+            zoomAmount = 18;
+        } else if($scope.data.address.lat_long.accuracy === "PostalCode"){
+          $scope.myAccuracy = "Postal Code"
+            zoomAmount = 11;
+        } else {
+          zoomAmount = 7;
+          $scope.myAccuracy = "Far"
+        }
+        var myCoords = {
+            lat: $scope.data.address.lat_long.latitude,
+            lng: $scope.data.address.lat_long.longitude
         };
         var map = new google.maps.Map(document.getElementById('map'), {
+            scrollwheel: false,
             zoom: zoomAmount,
-            center: myLocation
+            center: myCoords
         });
         var marker = new google.maps.Marker({
-            position: myLocation,
+            position: myCoords,
             map: map
         });
+    })();
 
-    }
-    initMap();
 
 });

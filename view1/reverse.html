@@ -1,44 +1,19 @@
 
-<div class="reverse-main-container">
-<img src="https://cdnwp.global.ssl.fastly.net/assets/ic-cropped-w-1d0708db3f67a733d7ef3555dba31f46.svg" class="bottomLogoMobile">
+<div class="reverse-main-container" ng-show="toggleInput">
   <div class="reverse-content-holder">
     <img class="mobile-main-logo" src="https://cdnwp.global.ssl.fastly.net/assets/home_page/logo_wp@2x-bb6883ecd1de19cc47355c5225412ee8.png" alt="">
 
-      <div class="reverse-input-container">
-    <input type="search" id="search"/>
-    <button class="icon"><i class="fa fa-search fa-2x"></i></button>
+  <div class="reverse-input-container">
+    <input type="search" id="search" ng-click="toggleInput = !toggleInput" />
+    <input type="text" id="search-large-input"  ng-model="num"/>
+    <button class="icon" ng-click="getPhoneNum(num)"><i class="fa fa-search fa-2x"></i></button>
   </div>
     <p>People and Public Records Search.</p>
     <h2>Find Contact Information and <em ><a href="" class="backgroundReportLink">Background Reports</a></em> on yourself or anyone else.</h2 >
   </div>
 
-
 </div>
+<input-mobile ng-show="!toggleInput"></input-mobile>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="phoneInfo">
-  The Number: {{phoneData.phoneNumber}} belongs to {{phoneData.belongsTo.name}}<br />
-  {{phoneData.address.street_line_1}} {{phoneData.address.city}} {{phoneData.address.postal_code}} {{phoneData.address.state_code}} {{phoneData.address.country_code}}
-
-  {{phoneData.carrier}}
-
-  {{phoneData.latLong.latitude}}
-  {{phoneData.latLong.longitude}}
-</div> -->
+<img src="https://cdnwp.global.ssl.fastly.net/assets/ic-cropped-w-1d0708db3f67a733d7ef3555dba31f46.svg" class="bottomLogoMobile">
